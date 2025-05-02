@@ -21,7 +21,7 @@ ml_picture_recognition/
 ├── labels.csv            # Zuordnung von Clipnamen zu Labels
 ├── README.md
 ├── .gitignore
-
+```
 Voraussetzungen
 Python 3.8+
 

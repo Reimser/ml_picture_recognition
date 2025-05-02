@@ -2,22 +2,29 @@ import torch
 import torch.nn as nn
 import torchvision.models as models
 
+# CNN-Encoder (ResNet-18 als Feature-Extraktor)
 class CNNEncoder(nn.Module):
     def __init__(self, embed_size=128):
         super(CNNEncoder, self).__init__()
-        # Kleines CNN bauen (ResNet-18 Backbone nehmen)
+
+        # Vortrainiertes ResNet-18 Modell laden
         base_model = models.resnet18(pretrained=True)
-        # Entferne die letzte Schicht (Classification Layer)
-        self.feature_extractor = nn.Sequential(*list(base_model.children())[:-1])
+        for param in base_model.parameters():
+            param.requires_grad = False  # Feature-Extractor einfrieren (optional)
+
+        # Entferne das letzte Klassifikations-Linear-Layer
+        self.feature_extractor = nn.Sequential(*list(base_model.children())[:-1])  # Output: [B, 512, 1, 1]
         self.fc = nn.Linear(base_model.fc.in_features, embed_size)
 
     def forward(self, x):
-        # x: (Batch*10, 3, 224, 224)
-        features = self.feature_extractor(x)
-        features = features.view(features.size(0), -1)  # Flach machen
-        features = self.fc(features)  # In eingebetteten Raum bringen
-        return features  # (Batch*10, 128)
+        # x: [B*T, 3, 224, 224]
+        features = self.feature_extractor(x)  # [B*T, 512, 1, 1]
+        features = features.view(features.size(0), -1)  # [B*T, 512]
+        features = self.fc(features)  # [B*T, embed_size]
+        return features
 
+
+# LSTM-Modul für zeitliche Abhängigkeiten
 class ActionLSTM(nn.Module):
     def __init__(self, embed_size=128, hidden_size=256, num_classes=4, num_layers=1):
         super(ActionLSTM, self).__init__()
@@ -25,13 +32,13 @@ class ActionLSTM(nn.Module):
         self.fc = nn.Linear(hidden_size, num_classes)
 
     def forward(self, features):
-        # features: (Batch, 10, 128)
-        lstm_out, _ = self.lstm(features)
-        # Nur den letzten Zeitschritt nehmen
-        final_output = lstm_out[:, -1, :]  # (Batch, hidden_size)
-        output = self.fc(final_output)
-        return output  # (Batch, num_classes)
+        # features: [B, T, embed_size]
+        lstm_out, _ = self.lstm(features)  # [B, T, hidden_size]
+        final_output = lstm_out[:, -1, :]  # nur letzter Zeitschritt: [B, hidden_size]
+        return self.fc(final_output)      # [B, num_classes]
 
+
+# Kombiniertes Gesamtmodell
 class HockeyActionModel(nn.Module):
     def __init__(self, embed_size=128, hidden_size=256, num_classes=4, num_layers=1):
         super(HockeyActionModel, self).__init__()
@@ -39,17 +46,17 @@ class HockeyActionModel(nn.Module):
         self.lstm = ActionLSTM(embed_size, hidden_size, num_classes, num_layers)
 
     def forward(self, frames_batch):
-        # frames_batch: (Batch, 100, 3, 224, 224)
-        batch_size, seq_len, C, H, W = frames_batch.size()
+        # frames_batch: [B, T, 3, 224, 224]
+        B, T, C, H, W = frames_batch.shape
 
-        # Erst alle Frames einzeln durch CNN-Encoder schicken
-        frames_batch = frames_batch.view(batch_size * seq_len, C, H, W)
-        features = self.encoder(frames_batch)
+        # Umformen zu [B*T, 3, 224, 224]
+        frames_batch = frames_batch.view(B * T, C, H, W)
 
-        # Features wieder in (Batch, Seq_len, Feature_dim) bringen
-        features = features.view(batch_size, seq_len, -1)
+        # Feature-Extraktion
+        features = self.encoder(frames_batch)  # [B*T, embed_size]
 
-        # Sequenz durch LSTM
-        output = self.lstm(features)
+        # Zurückformen in [B, T, embed_size]
+        features = features.view(B, T, -1)
 
-        return output
+        # Klassifikation durch LSTM
+        return self.lstm(features)  # [B, num_classes]

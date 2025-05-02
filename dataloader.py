@@ -1,11 +1,12 @@
 import os
 import pandas as pd
+import torch
 from torch.utils.data import Dataset
 from torchvision import transforms
 from PIL import Image
 
 class HockeyDataset(Dataset):
-    def __init__(self, labels_csv, frames_root, transform=None, frames_per_clip=10):
+    def __init__(self, labels_csv, frames_root, transform=None, frames_per_clip=100):
         self.labels_df = pd.read_csv(labels_csv)
         self.frames_root = frames_root
         self.transform = transform
@@ -26,8 +27,13 @@ class HockeyDataset(Dataset):
             if f.endswith('.jpg')
         ])
 
-        # Nur die ersten N Frames nehmen (z.B. 10)
-        frames = frames[:self.frames_per_clip]
+        # Letzte N Frames verwenden oder vorne auffüllen
+        if len(frames) >= self.frames_per_clip:
+            frames = frames[-self.frames_per_clip:]
+        else:
+            last_frame = frames[-1]
+            while len(frames) < self.frames_per_clip:
+                frames.insert(0, last_frame)
 
         images = []
         for frame_path in frames:
@@ -36,4 +42,9 @@ class HockeyDataset(Dataset):
                 image = self.transform(image)
             images.append(image)
 
-        return images, label
+        # Bilder zu Tensor stapeln: [T, 3, 224, 224]
+        video_tensor = torch.stack(images)
+
+        return video_tensor, int(label)
+
+

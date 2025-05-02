@@ -39,7 +39,7 @@ class HockeyActionModel(nn.Module):
         self.lstm = ActionLSTM(embed_size, hidden_size, num_classes, num_layers)
 
     def forward(self, frames_batch):
-        # frames_batch: (Batch, 10, 3, 224, 224)
+        # frames_batch: (Batch, 100, 3, 224, 224)
         batch_size, seq_len, C, H, W = frames_batch.size()
 
         # Erst alle Frames einzeln durch CNN-Encoder schicken

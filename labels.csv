@@ -1,23 +1,93 @@
 clip_name,label
-check_clip (1).mp4,Check
-check_clip (10).mp4,Check
-check_clip (11).mp4,Check
-check_clip (12).mp4,Check
-check_clip (13).mp4,Check
-check_clip (14).mp4,Check
-check_clip (15).mp4,Check
-check_clip (16).mp4,Check
-check_clip (17).mp4,Check
-check_clip (18).mp4,Check
-check_clip (2).mp4,Check
-check_clip (3).mp4,Check
-check_clip (4).mp4,Check
-check_clip (5).mp4,Check
-check_clip (6).mp4,Check
-check_clip (7).mp4,Check
-check_clip (8).mp4,Check
-check_clip (9).mp4,Check
+check_clip1.mp4,Check
+check_clip2.mp4,Check
+check_clip3.mp4,Check
+check_clip4.mp4,Check
+check_clip5.mp4,Check
+check_clip6.mp4,Check
+check_clip7.mp4,Check
+check_clip8.mp4,Check
+check_clip9.mp4,Check
+check_clip10.mp4,Check
+check_clip11.mp4,Check
+check_clip12.mp4,Check
+check_clip13.mp4,Check
+check_clip14.mp4,Check
+check_clip15.mp4,Check
+check_clip16.mp4,Check
+check_clip17.mp4,Check
+check_clip18.mp4,Check
+
+schuss_clip1.mp4,Schuss
+schuss_clip2.mp4,Schuss
+schuss_clip3.mp4,Schuss
+schuss_clip4.mp4,Schuss
+schuss_clip5.mp4,Schuss
+schuss_clip6.mp4,Schuss
+schuss_clip7.mp4,Schuss
+schuss_clip8.mp4,Schuss
+schuss_clip9.mp4,Schuss
+schuss_clip10.mp4,Schuss
+schuss_clip11.mp4,Schuss
+schuss_clip12.mp4,Schuss
+schuss_clip13.mp4,Schuss
+schuss_clip14.mp4,Schuss
+schuss_clip15.mp4,Schuss
+schuss_clip16.mp4,Schuss
+schuss_clip17.mp4,Schuss
+schuss_clip18.mp4,Schuss
+schuss_clip19.mp4,Schuss
+schuss_clip20.mp4,Schuss
+schuss_clip21.mp4,Schuss
+schuss_clip22.mp4,Schuss
+schuss_clip23.mp4,Schuss
+schuss_clip24.mp4,Schuss
+schuss_clip25.mp4,Schuss
+schuss_clip26.mp4,Schuss
+schuss_clip27.mp4,Schuss
+schuss_clip28.mp4,Schuss
+schuss_clip29.mp4,Schuss
+schuss_clip30.mp4,Schuss
+schuss_clip31.mp4,Schuss
+schuss_clip32.mp4,Schuss
+
+tor_clip1.mp4,Tor
+tor_clip2.mp4,Tor
+tor_clip3.mp4,Tor
+tor_clip4.mp4,Tor
+tor_clip5.mp4,Tor
+tor_clip6.mp4,Tor
+tor_clip7.mp4,Tor
+tor_clip8.mp4,Tor
+tor_clip9.mp4,Tor
+tor_clip10.mp4,Tor
+tor_clip11.mp4,Tor
+tor_clip12.mp4,Tor
+tor_clip13.mp4,Tor
+tor_clip14.mp4,Tor
+tor_clip15.mp4,Tor
+tor_clip16.mp4,Tor
+tor_clip17.mp4,Tor
+tor_clip18.mp4,Tor
+tor_clip19.mp4,Tor
+tor_clip20.mp4,Tor
+tor_clip21.mp4,Tor
+tor_clip22.mp4,Tor
+tor_clip23.mp4,Tor
+tor_clip24.mp4,Tor
+tor_clip25.mp4,Tor
+tor_clip26.mp4,Tor
+tor_clip27.mp4,Tor
+
 neutral_clip1.mp4,Neutral
+neutral_clip2.mp4,Neutral
+neutral_clip3.mp4,Neutral
+neutral_clip4.mp4,Neutral
+neutral_clip5.mp4,Neutral
+neutral_clip6.mp4,Neutral
+neutral_clip7.mp4,Neutral
+neutral_clip8.mp4,Neutral
+neutral_clip9.mp4,Neutral
 neutral_clip10.mp4,Neutral
 neutral_clip11.mp4,Neutral
 neutral_clip12.mp4,Neutral
@@ -28,76 +98,9 @@ neutral_clip16.mp4,Neutral
 neutral_clip17.mp4,Neutral
 neutral_clip18.mp4,Neutral
 neutral_clip19.mp4,Neutral
-neutral_clip2.mp4,Neutral
 neutral_clip20.mp4,Neutral
 neutral_clip21.mp4,Neutral
 neutral_clip22.mp4,Neutral
 neutral_clip23.mp4,Neutral
 neutral_clip24.mp4,Neutral
 neutral_clip25.mp4,Neutral
-neutral_clip3.mp4,Neutral
-neutral_clip4.mp4,Neutral
-neutral_clip5.mp4,Neutral
-neutral_clip6.mp4,Neutral
-neutral_clip7.mp4,Neutral
-neutral_clip8.mp4,Neutral
-neutral_clip9.mp4,Neutral
-schuss_clip (1).mp4,Schuss
-schuss_clip (10).mp4,Schuss
-schuss_clip (11).mp4,Schuss
-schuss_clip (12).mp4,Schuss
-schuss_clip (13).mp4,Schuss
-schuss_clip (14).mp4,Schuss
-schuss_clip (15).mp4,Schuss
-schuss_clip (16).mp4,Schuss
-schuss_clip (17).mp4,Schuss
-schuss_clip (18).mp4,Schuss
-schuss_clip (19).mp4,Schuss
-schuss_clip (2).mp4,Schuss
-schuss_clip (20).mp4,Schuss
-schuss_clip (21).mp4,Schuss
-schuss_clip (22).mp4,Schuss
-schuss_clip (23).mp4,Schuss
-schuss_clip (24).mp4,Schuss
-schuss_clip (25).mp4,Schuss
-schuss_clip (26).mp4,Schuss
-schuss_clip (27).mp4,Schuss
-schuss_clip (28).mp4,Schuss
-schuss_clip (29).mp4,Schuss
-schuss_clip (3).mp4,Schuss
-schuss_clip (30).mp4,Schuss
-schuss_clip (31).mp4,Schuss
-schuss_clip (32).mp4,Schuss
-schuss_clip (4).mp4,Schuss
-schuss_clip (5).mp4,Schuss
-schuss_clip (6).mp4,Schuss
-schuss_clip (7).mp4,Schuss
-schuss_clip (8).mp4,Schuss
-schuss_clip (9).mp4,Schuss
-tor_clip (1).mp4,Tor
-tor_clip (10).mp4,Tor
-tor_clip (11).mp4,Tor
-tor_clip (12).mp4,Tor
-tor_clip (13).mp4,Tor
-tor_clip (14).mp4,Tor
-tor_clip (15).mp4,Tor
-tor_clip (16).mp4,Tor
-tor_clip (17).mp4,Tor
-tor_clip (18).mp4,Tor
-tor_clip (19).mp4,Tor
-tor_clip (2).mp4,Tor
-tor_clip (20).mp4,Tor
-tor_clip (21).mp4,Tor
-tor_clip (22).mp4,Tor
-tor_clip (23).mp4,Tor
-tor_clip (24).mp4,Tor
-tor_clip (25).mp4,Tor
-tor_clip (26).mp4,Tor
-tor_clip (27).mp4,Tor
-tor_clip (3).mp4,Tor
-tor_clip (4).mp4,Tor
-tor_clip (5).mp4,Tor
-tor_clip (6).mp4,Tor
-tor_clip (7).mp4,Tor
-tor_clip (8).mp4,Tor
-tor_clip (9).mp4,Tor

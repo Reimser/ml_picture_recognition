@@ -3,9 +3,8 @@ Dieses Projekt beschäftigt sich mit der Klassifikation von Eishockey-Aktionen w
 Dazu werden Videoclips in einzelne Frames aufgeteilt, über ein CNN encodiert und anschließend sequenziell mit einem LSTM ausgewertet.
 
 ## Projektstruktur
-php
-Kopieren
-Bearbeiten
+
+```text
 ml_picture_recognition/
 ├── clips/                # Geschnittene Videoclips (.mp4)
 ├── frames/               # Extrahierte Einzelbilder aus Clips
@@ -22,6 +21,7 @@ ml_picture_recognition/
 ├── labels.csv            # Zuordnung von Clipnamen zu Labels
 ├── README.md
 ├── .gitignore
+
 Voraussetzungen
 Python 3.8+
 

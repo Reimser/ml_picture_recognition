@@ -33,12 +33,8 @@ MANIFEST
 *.spec
 
 # Ordner 
-clips/
-frames/
+data/
 models/
-poses/
-videos_roh/
-
 
 # Installer logs
 pip-log.txt

@@ -4,11 +4,11 @@
 # Dieses Skript geht davon aus, dass das Eingabevideo im Ordner videos_roh/ liegt.
 
 # Name des Eingabevideos (ohne Endung)
-video_name="neutral"
-input_video="videos_roh/${video_name}.mp4"
+video_name="test"
+input_video="../data/videos_roh/${video_name}.mp4"
 
 # Zielverzeichnis für die Clips
-output_dir="clips"
+output_dir="../data/test_clips"
 mkdir -p "$output_dir"
 
 # Clipdauer in Sekunden

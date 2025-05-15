@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Ordner, in dem deine Clips liegen
-clips_dir="clips"
+clips_dir="../data/test_clips"
 
 # Zielordner für die Frames
-frames_dir="frames"
+frames_dir="../data/test_frames"
 
 # Zielordner erstellen, falls er noch nicht existiert
 mkdir -p "$frames_dir"

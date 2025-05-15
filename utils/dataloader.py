@@ -6,9 +6,9 @@ from torchvision import transforms
 from PIL import Image
 
 class HockeyDataset(Dataset):
-    def __init__(self, labels_csv, frames_root, transform=None, frames_per_clip=100):
+    def __init__(self, csv_file, frames_root, transform=None, frames_per_clip=100):
         # CSV-Datei mit clip_name + Multi-Label-Spalten (Check, Neutral, Schuss, Tor) laden
-        self.labels_df = pd.read_csv(labels_csv)
+        self.labels_df = pd.read_csv(csv_file)
         self.frames_root = frames_root
         self.frames_per_clip = frames_per_clip
 

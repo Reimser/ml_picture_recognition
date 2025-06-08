@@ -3,12 +3,11 @@ import torch.nn as nn
 import torchvision.models as models
 import torchvision.models.video as video_models
 
-
 # ---------------------------
 # CNN-Encoder für ResNet18
 # ---------------------------
 class CNNEncoderResNet18(nn.Module):
-    def __init__(self, embed_size=128, fine_tune_last_block=True):
+    def __init__(self, embed_size=256, fine_tune_last_block=True):
         super(CNNEncoderResNet18, self).__init__()
 
         base_model = models.resnet18(pretrained=True)
@@ -17,6 +16,8 @@ class CNNEncoderResNet18(nn.Module):
             param.requires_grad = False
 
         if fine_tune_last_block:
+            for param in base_model.layer3.parameters():
+                param.requires_grad = True
             for param in base_model.layer4.parameters():
                 param.requires_grad = True
 
@@ -33,7 +34,7 @@ class CNNEncoderResNet18(nn.Module):
 # CNN-Encoder für ResNet34
 # ---------------------------
 class CNNEncoderResNet34(nn.Module):
-    def __init__(self, embed_size=128, fine_tune_last_block=True):
+    def __init__(self, embed_size=256, fine_tune_last_block=True):
         super(CNNEncoderResNet34, self).__init__()
 
         base_model = models.resnet34(pretrained=True)
@@ -42,6 +43,8 @@ class CNNEncoderResNet34(nn.Module):
             param.requires_grad = False
 
         if fine_tune_last_block:
+            for param in base_model.layer3.parameters():
+                param.requires_grad = True
             for param in base_model.layer4.parameters():
                 param.requires_grad = True
 
@@ -58,7 +61,7 @@ class CNNEncoderResNet34(nn.Module):
 # LSTM-Modul
 # ---------------------------
 class ActionLSTM(nn.Module):
-    def __init__(self, embed_size=128, hidden_size=256, num_classes=4, num_layers=1, dropout=0.2):
+    def __init__(self, embed_size=256, hidden_size=256, num_classes=4, num_layers=1, dropout=0.2):
         super(ActionLSTM, self).__init__()
         self.lstm = nn.LSTM(embed_size, hidden_size, num_layers, batch_first=True, dropout=dropout)
 
@@ -77,7 +80,7 @@ class ActionLSTM(nn.Module):
 # Komplette Modelle
 # ---------------------------
 class HockeyActionModelResNet18(nn.Module):
-    def __init__(self, embed_size=128, hidden_size=256, num_classes=4, num_layers=1):
+    def __init__(self, embed_size=256, hidden_size=256, num_classes=4, num_layers=1):
         super(HockeyActionModelResNet18, self).__init__()
         self.encoder = CNNEncoderResNet18(embed_size)
         self.lstm = ActionLSTM(embed_size, hidden_size, num_classes, num_layers)
@@ -90,7 +93,7 @@ class HockeyActionModelResNet18(nn.Module):
         return self.lstm(features)
 
 class HockeyActionModelResNet34(nn.Module):
-    def __init__(self, embed_size=128, hidden_size=256, num_classes=4, num_layers=1):
+    def __init__(self, embed_size=256, hidden_size=256, num_classes=4, num_layers=1):
         super(HockeyActionModelResNet34, self).__init__()
         self.encoder = CNNEncoderResNet34(embed_size)
         self.lstm = ActionLSTM(embed_size, hidden_size, num_classes, num_layers)
@@ -103,7 +106,6 @@ class HockeyActionModelResNet34(nn.Module):
         return self.lstm(features)
 
 # --- R3D-18 Modell ---
-
 class R3D18Model(nn.Module):
     def __init__(self, num_classes=4):
         super(R3D18Model, self).__init__()
